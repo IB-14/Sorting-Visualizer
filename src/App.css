@@ -39,6 +39,7 @@
 
 body {
   height: 100vh;
-  background-image: linear-gradient(#ffffff, #67aeff)
+  background-color: #F5FBFE
+  /* background-image: linear-gradient(#ffffff, #67aeff) */
   /*background-color: /*#1c1c1c*/ /*#212121*/;
 }

@@ -1,5 +1,38 @@
 .nav {
-    height: 10vh;
-    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    align-items: center;
+    z-index: 100;
+    color: #f5fbfe;
+    height: 75px;
+    background-color: #121212;
+    padding: 0 2em;
+    font-size: 1.75rem;
     /*background-color: /*#95abc59a*/ /*48484a;*/
+}
+.buts {
+    display: flex;
+}
+.button {
+    background-color: #0EF0FB ;
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-size: 1.25rem;
+    color: #121212;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #2eb4fc;
+}
+.speed {
+    margin-left: 10px;
+}
+@media only screen and (max-width: 700px) {
+    .nav {
+        font-size: 1rem;
+    }
+    .button {
+        font-size: 1rem;
+    }
 }

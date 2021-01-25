@@ -1,0 +1,30 @@
+.container {
+    perspective: 1000px;
+    transform: rotateY(60deg);
+    background-color: /*#48484a71*/ /*#1c1c1c*/ #121212;
+    transform: rotate(180deg) scaleX(-1);
+    display: grid;
+    grid-template-columns: repeat(50, 1fr);
+   height: 280px;
+   /* border: 5px solid #48484a4d; */
+   /*box-shadow: 20px -20px #48484a4d*/ /*#1c1c1c*/;
+   padding: 0 20px;
+}
+.bar {
+    background-color: #0377FE /*#0EF0FB*/;
+    display: inline-block;
+}
+
+@media only screen and (min-width: 700px) {
+    .container {
+        grid-gap: 6px;
+        margin: 50px 150px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .container {
+        grid-gap: 3px;
+        margin: 50px;
+    }
+}

@@ -38,8 +38,19 @@
 }
 
 body {
-  height: 100vh;
-  background-color: #F5FBFE
-  /* background-image: linear-gradient(#ffffff, #67aeff) */
+  /* height: 100vh;background-size: cover; */
+  background-image: linear-gradient(to top left, #a5dcfa, #f2fcfe /*#b8e6ff*/);
+  height: 100%;
+  position: relative;
+  overflow-x: hidden
+  /* background-color: #a5dcfa; */
+  /* background-color: #F5FBFE */
+  /* background-image: linear-gradient(to bottom right, red, #67aeff) */
   /*background-color: /*#1c1c1c*/ /*#212121*/;
 }
+
+@media only screen and (min-width: 1120px) {
+  body {
+    height: 100vh;
+  }
+  }

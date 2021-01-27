@@ -5,10 +5,11 @@
     align-items: center;
     z-index: 100;
     color: #f5fbfe;
-    height: 75px;
+    height: 9.469696969696969vh;/*75px;*/
     background-color: #121212;
     padding: 0 2em;
     font-size: 1.75rem;
+    box-shadow: 10px 8px 16px 10px rgba(0,0,0,0.2);
     /*background-color: /*#95abc59a*/ /*48484a;*/
 }
 .buts {
@@ -36,3 +37,37 @@
         font-size: 1rem;
     }
 }
+.drop-content{
+    position: relative;
+    margin-left: 0.67em;
+    font-size: 1rem;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 49px;
+    /* min-width: 160px; */
+    box-shadow: 10px 8px 16px 10px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: 0.3s;
+  }
+  .drop-content div {
+    text-align: center;
+    float: none;
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    transition: 0.1s;
+  }
+  .drop-content div:hover {
+    background-color: #ddd;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .drop:hover .drop-content {
+    transition: 0.3s;
+    display: block;
+  }
+  .drop:hover .speed {
+    background-color: #2eb4fc;
+  }

@@ -6,6 +6,8 @@ class Navbar extends React.Component {
         super(props);
         this.state = {
             array: [],
+            arrSize: 100,
+            size: 'Size: '+ /*arrSize*/ 100,
             speed: 'x'+1
         }
     }
@@ -23,14 +25,26 @@ class Navbar extends React.Component {
         })
     }
 
+    newArray() {
+        // document.getElementsByClassName('container').style.gridTemplateColumns = "repeat("+`${this.state.arrSize}`+" ,1fr)"; 
+        this.props.resetArray(this.state.arrSize)
+    }
+
+    setSize(x) {
+        this.setState({
+            arrSize: x,
+            size: 'Size: '+ x,
+        }, () => this.newArray());        
+    }
+
     // clicked = () => {
     //     window.location.reload(false)
     //     randomRender= true;
     //     console.log(randomRender);
     // }
 
-    resetArray = () => {
-        this.props.resetArray(this.state.array);
+    resetArray = (/*this.state.size*/) => {
+        this.props.resetArray(this.state.arrSize);
     }
 
     // changeSpeed=(e)=> {
@@ -43,12 +57,29 @@ class Navbar extends React.Component {
     // }
 
     render() {
+
+    var n= this.state.arrSize;
+
     return (
         <nav className="nav">
             <div>
                 Sorting Visualizer
             </div>
             <div className="buts">
+            <div className="drop">
+                    <div className="button size">
+                        {this.state.size}
+                    </div>
+                    <div className="drop-content drop-size">
+                        
+                            <div value="1" onClick={()=>{this.setSize(5)}}>5</div>
+                            <div value="1" onClick={()=>{this.setSize(10)}}>10</div>
+                            <div value="2" onClick={()=>{this.setSize(25)}}>25</div>
+                            <div value="4" onClick={()=>{this.setSize(50)}}>50</div>
+                            <div value="8" onClick={()=>{this.setSize(100)}}>100</div>
+
+                    </div>    
+                </div>
                 <div className="button" onClick={this.resetArray}>
                     Random
                 </div>

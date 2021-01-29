@@ -1,3 +1,6 @@
+.wrapper {
+    min-height: 94vh;
+}
 .background {
     height: 82.53030303030303%;
     /* margin-bottom: 2em; */

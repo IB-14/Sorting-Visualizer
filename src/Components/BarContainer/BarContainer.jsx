@@ -8,10 +8,18 @@ export default class BarContainer extends React.Component {
 
     render() {
         const barColor = this.props.barColor;
+        let n= this.props.array.length;
+        let gap;
+        (n<50 ? gap = 20 : gap = 5);
         return (
-            <div className="container">
+            <div className="container"
+                style={{
+                    gridTemplateColumns : `repeat(${n} ,1fr`,
+                    gridGap: `${gap}px`
+                }}
+            >
                 {this.props.array.map((value, index) => (
-                    <div className="bar"
+                    <div className="bar" id= {index}
                         key={index}
                         style={{
                             height: `${value}px`,

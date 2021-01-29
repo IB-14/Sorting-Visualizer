@@ -32,6 +32,9 @@
 .speed {
     margin-left: 10px;
 }
+.size {
+    margin-right: 10px;
+}
 @media only screen and (max-width: 700px) {
     .nav {
         font-size: 1rem;
@@ -76,5 +79,11 @@
     display: block;
   }
   .drop:hover .speed {
+    background-color: #2eb4fc;
+  }
+  .drop-size {
+      width: 79.5px;
+  }
+  .drop:hover .size {
     background-color: #2eb4fc;
   }

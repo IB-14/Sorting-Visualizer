@@ -3,7 +3,7 @@ import '../Navbar/Navbar';
 import Navbar from '../Navbar/Navbar';
 import BarComponent from '../BarContainer/BarContainer';
 import './Visualizer.css';
-import {mergeSort} from '../../Algorithms/mergeSort'
+import {mergeSortAnimations} from '../../Algorithms/mergeSort'
 
 export default class SortingVisualizer extends Component {
     constructor(props) {
@@ -11,6 +11,7 @@ export default class SortingVisualizer extends Component {
 
         this.state = {
             array: [],
+            arrSize: 100,
             activeColor: "#0EF0FB"
         };
 
@@ -20,40 +21,12 @@ export default class SortingVisualizer extends Component {
         
 
     componentDidMount() {
-        this.resetArray();
+        this.resetArray(this.state.arrSize);
     }
 
-    // shouldComponentUpdate() {
-    //     console.log("should");
-    //     return true;
-    // }
-
-    // componentDidUpdate(prevProps) {
-    //     console.log("fd");
-    //     const {array}= this.state;
-    //     if(this.props.randomRender!==prevProps.randomRender) {
-    //         this.resetArray();
-    //         return (
-    //             <div className="background">
-    //             <div className="stage"></div>
-    //             <div className="container">
-    //                 {array.map((value, index) => (
-    //                     <div className="bar"
-    //                         key={index}
-    //                         style={{
-    //                             height: `${value}px`,
-    //                         }}></div>   
-    //                 ))}
-    //             </div>
-    //             </div>
-    //         );
-    //     }
-    // }
-
-    resetArray() {
+    resetArray(n) {
         const array= [];
-        // let n= randomHeight(10, 50);
-        for(let i= 0; i<100/*n*/; i++) {
+        for(let i= 0; i<n; i++) {
             array.push(randomHeight(10, 250));
         }
         this.setState({array, activeColor: "#0EF0FB"});
@@ -66,6 +39,8 @@ export default class SortingVisualizer extends Component {
 
         // var button= document.getElementsByClassName("sort-button");
         // button.classList.remove('activeBut');
+
+        console.log(this.state.array);
     }
 
     bubble_sort = () => {
@@ -82,14 +57,37 @@ export default class SortingVisualizer extends Component {
     
 
     merge_sort = () => {
-        const sortedArray = mergeSort(this.state.array);
-        this.setState({array: sortedArray})
-        // console.log(sortedArray);
-        this.setState({activeColor: "palegreen"});
-        // const activeButton= this.activeButStyles();
-        // this.divRef.current.style= activeButton;
+        const animations = mergeSortAnimations(this.state.array);
+        // this.setState({activeColor: "palegreen"});
         document.getElementById('mergeS').classList.add('activeBut');
-        // console.log(activeButton);
+        
+        // for(let i= 0; i< animations.length; i++) {
+            
+        //     const bar= document.getElementById('bar');
+        //     const isColorChange = i%3!==2;
+            
+        //     if(isColorChange) {
+        //         const[firstBar, secondBar] = animations[i];
+        //         console.log(animations[i]);
+        //         const firstBarStyle= bar[firstBar].style;
+        //         const secondBarStyle= bar[secondBar].style;
+        //         const color= 1%3===0 ? 'palevioletred' : '#0EF0FB';
+        //         setTimeout(() => {
+        //             firstBarStyle.backgroundColor= color;
+        //             secondBarStyle.backgroundColor= color;
+        //         }, i*5 );
+        //     }
+            
+        //     else {
+        //         setTimeout(() => {
+        //             const [firstBar, newHeight] = animations[i];
+        //             const firstBarStyle= bar[firstBar].style;
+        //             firstBarStyle.height = `${newHeight}px`;
+        //         }, i*5 );
+        //     }
+
+        // }
+
     }
 
     quick_sort = () => {
@@ -109,11 +107,11 @@ export default class SortingVisualizer extends Component {
         }
         console.log(this.state.activeBut);
         return (
-            <>
+            <div className= "wrapper">
             <Navbar array={this.state.array} resetArray={this.resetArray.bind(this)} />
             <div className="background">
             <div className="stage"></div>
-            <BarComponent array={this.state.array} barColor={this.state.activeColor}/>
+            <BarComponent array={this.state.array} barColor={this.state.activeColor}/>        
             <div className="but-wrap">
                 <div className="sort-button rem" id="bubbleS" tabindex="1" onClick={this.bubble_sort}>Bubble Sort</div>
                 <div className="sort-button rem" id="selectionS" tabindex="2" onClick={this.selection_sort}>Selection Sort</div>
@@ -123,7 +121,7 @@ export default class SortingVisualizer extends Component {
                 <div className="sort-button rem" id="heapS" tabindex="6" onClick={this.heap_sort}>Heap Sort</div>
             </div>
             </div>
-            </>
+            </div>
         );
     }
 }

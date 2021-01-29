@@ -1,17 +1,36 @@
 import React, {useState} from 'react';
 import './Navbar.css';
 
-function Navbar(props) {
-    var [s, setSpeed]= useState(1);
-    var [randomRender, clicked] = useState(false);
+class Navbar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            array: [],
+            speed: 'x'+1
+        }
+    }
+
+    // var [s, setSpeed]= useState(1);
+    // var [randomRender, clicked] = useState(false);
     // var [speed, setSpeed] = useState('x'+`${s}`);
-    var speed= 'x'+`${s}`;    
+    // var speed= 'x'+`${s}`;    
 
     // console.log(randomRender);
-    clicked = () => {
-        window.location.reload(false)
-        randomRender= true;
-        console.log(randomRender);
+
+    setSpeed(x) {
+        this.setState({
+            speed: 'x'+ x
+        })
+    }
+
+    // clicked = () => {
+    //     window.location.reload(false)
+    //     randomRender= true;
+    //     console.log(randomRender);
+    // }
+
+    resetArray = () => {
+        this.props.resetArray(this.state.array);
     }
 
     // changeSpeed=(e)=> {
@@ -23,31 +42,32 @@ function Navbar(props) {
     //     console.log(s);
     // }
 
+    render() {
     return (
         <nav className="nav">
             <div>
                 Sorting Visualizer
             </div>
             <div className="buts">
-                <div className="button" onClick={(clicked)}>
+                <div className="button" onClick={this.resetArray}>
                     Random
                 </div>
-                <dic className="drop">
+                <div className="drop">
                     <div className="button speed" /*onClick={()=>setSpeed('x'+`${2*s}`)}*/>
-                        {speed}
+                        {this.state.speed}
                     </div>
                     <div className="drop-content">
                         
-                            <div value="0.5" onClick={()=>{setSpeed(0.5)}}>x0.5</div>
-                            <div value="1" onClick={()=>{setSpeed(1)}}>x1</div>
-                            <div value="2" onClick={()=>{setSpeed(2)}}>x2</div>
-                            <div value="4" onClick={()=>{setSpeed(4)}}>x4</div>
-                        
+                            <div value="1" onClick={()=>{this.setSpeed(1)}}>x1</div>
+                            <div value="2" onClick={()=>{this.setSpeed(2)}}>x2</div>
+                            <div value="4" onClick={()=>{this.setSpeed(4)}}>x4</div>
+                            <div value="8" onClick={()=>{this.setSpeed(8)}}>x8</div>
+
                     </div>    
-                </dic>
+                </div>
             </div>
         </nav>
     )
 }
-
+}
 export default Navbar;

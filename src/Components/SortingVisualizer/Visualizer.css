@@ -2,19 +2,6 @@
     height: 82.53030303030303%;
     /* margin-bottom: 2em; */
 }
-.container {
-    z-index: 50;
-    background-color: /*#48484a71*/ /*#1c1c1c*/ #272b3d;
-    transform: rotate(180deg) scaleX(-1);
-    display: grid;
-    grid-template-columns: repeat(100, 1fr);
-   height: 280px;
-   border-radius: 5px; 
-   /* border: 5px solid #48484a4d; */
-   /*box-shadow: 20px -20px #48484a4d*/ /*#1c1c1c*/;
-   padding: 20px 20px 0px;
-   box-shadow: 25px -20px 20px 0px rgba(0, 0, 0, 0.404);
-}
 /* .stage {
     z-index: -1;
     position: absolute;
@@ -46,24 +33,6 @@
     } */
 
 /*#f2f5f9*/
-.bar {
-    background-color: /*#0377FE*/ #0EF0FB;
-    display: inline-block;
-}
-
-@media only screen and (min-width: 700px) {
-    .container {
-        grid-gap: 5px;
-        margin: 50px 50px;
-    }
-}
-
-@media only screen and (max-width: 700px) {
-    .container {
-        grid-gap: 2px;
-        margin: 50px;
-    }
-}
 
 .but-wrap {
     margin: 0 80px;
@@ -72,6 +41,11 @@
     grid-gap: 3em;
 }
 
+@media only screen and (max-width: 818px) {
+    .but-wrap {
+        padding: 0.5em;
+    }
+}
 @media only screen and (max-width: 500px) {
     .but-wrap {
         margin: 0px;
@@ -93,6 +67,7 @@
     justify-content: center;
     align-items: center;
     /* border-radius: 15px; */
+    outline: 0;
     height: 40px;
     width: 200px;
     background-color: #272b3d;
@@ -105,17 +80,31 @@
     /* color: #121212; */
     cursor: pointer;
     border: 5px solid #272b3d;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.281);
 }
 .sort-button:hover {
     background-color: #121212  /*#44f6ff*/;
     border: 5px solid #272b3d;
     /* color: #272b3d; */
     font-weight: 700;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.404);
 }
-.sort-button:focus {
-    background-color: #0EF0FB;
+/* .sort-button:focus {
+    background-color: palegreen;
     color: #121212;
     font-weight: 700;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.404);
+} */
+.activeBut {
+    background-color: palegreen;
+    color: #121212;
+    font-weight: 700;
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.404);
+}
+.activeBut:hover {
+    background-color: palegreen;
+    border: 5px solid #272b3d;
+    /* color: #272b3d; */
+    font-weight: 700;
+    box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.404);
 }

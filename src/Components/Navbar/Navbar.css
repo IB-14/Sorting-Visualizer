@@ -5,10 +5,12 @@
     align-items: center;
     z-index: 100;
     color: #f5fbfe;
-    height: 9.469696969696969vh;/*75px;*/
+    /* height: 9.469696969696969vh;75px; */
+    height: 64px;
     background-color: #121212;
     padding: 0 2em;
-    font-size: 1.75rem;
+    /* font-size: 1.75rem; */
+    font-size: 22px;
     box-shadow: 10px 8px 16px 10px rgba(0,0,0,0.2);
     /*background-color: /*#95abc59a*/ /*48484a;*/
 }
@@ -19,7 +21,8 @@
     background-color: #0EF0FB ;
     padding: 5px 15px;
     border-radius: 3px;
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
+    font-size: 18px;
     color: #121212;
     cursor: pointer;
 }
@@ -36,15 +39,19 @@
     .button {
         font-size: 1rem;
     }
+    .drop-content {
+        margin-left: 0.65em !important;
+        width: 45.5px !important;
+    }
 }
 .drop-content{
     position: relative;
-    margin-left: 0.67em;
+    margin-left: 0.64em;
     font-size: 1rem;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    width: 49px;
+    width: 48px;
     /* min-width: 160px; */
     box-shadow: 10px 8px 16px 10px rgba(0,0,0,0.2);
     z-index: 1;

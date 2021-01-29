@@ -42,7 +42,11 @@ body {
   background-image: linear-gradient(to top left, #a5dcfa, #f2fcfe /*#b8e6ff*/);
   height: 100%;
   position: relative;
-  overflow-x: hidden
+  overflow-x: hidden;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   /* background-color: #a5dcfa; */
   /* background-color: #F5FBFE */
   /* background-image: linear-gradient(to bottom right, red, #67aeff) */
@@ -53,4 +57,21 @@ body {
   body {
     height: 100vh;
   }
+  }
+
+  .scrollable-element {
+    scrollbar-color: #f2fcfe #272b3d;
+  }
+
+  /* Chrome, Safari */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+  }
+  ::-webkit-scrollbar-track-piece  {
+  background-color: #f2fcfe;
+  }
+  ::-webkit-scrollbar-thumb:vertical {
+  height: 30px;
+  background-color: #272b3d;
   }

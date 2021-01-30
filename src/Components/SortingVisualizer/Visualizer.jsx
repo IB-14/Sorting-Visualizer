@@ -3,7 +3,7 @@ import '../Navbar/Navbar';
 import Navbar from '../Navbar/Navbar';
 import BarComponent from '../BarContainer/BarContainer';
 import './Visualizer.css';
-import {mergeSortAnimations} from '../../Algorithms/mergeSort'
+import mergeSortAnimations from '../../Algorithms/mergeSortAnimations'
 
 export default class SortingVisualizer extends Component {
     constructor(props) {
@@ -11,7 +11,8 @@ export default class SortingVisualizer extends Component {
 
         this.state = {
             array: [],
-            arrSize: 100,
+            arrSize: 10,
+            speed: 200,
             activeColor: "#0EF0FB"
         };
 
@@ -40,8 +41,21 @@ export default class SortingVisualizer extends Component {
         // var button= document.getElementsByClassName("sort-button");
         // button.classList.remove('activeBut');
 
-        console.log(this.state.array);
+        // console.log(this.state.array);
     }
+
+    sortComplete() {
+        this.setState({activeColor: "palegreen"});
+    }
+
+    changeSpeed = (x) => {
+        this.setState({
+            speed: 200/x,
+        })
+        console.log(this.state.speed)
+    }
+
+
 
     bubble_sort = () => {
         document.getElementById('bubbleS').classList.add('activeBut');
@@ -58,35 +72,38 @@ export default class SortingVisualizer extends Component {
 
     merge_sort = () => {
         const animations = mergeSortAnimations(this.state.array);
-        // this.setState({activeColor: "palegreen"});
+        console.log(animations.length);
         document.getElementById('mergeS').classList.add('activeBut');
-        
-        // for(let i= 0; i< animations.length; i++) {
+        let count= 0;
+        for(let i= 0; i< animations.length; i++) {
             
-        //     const bar= document.getElementById('bar');
-        //     const isColorChange = i%3!==2;
+            const isColorChange = i%3!==2;
             
-        //     if(isColorChange) {
-        //         const[firstBar, secondBar] = animations[i];
-        //         console.log(animations[i]);
-        //         const firstBarStyle= bar[firstBar].style;
-        //         const secondBarStyle= bar[secondBar].style;
-        //         const color= 1%3===0 ? 'palevioletred' : '#0EF0FB';
-        //         setTimeout(() => {
-        //             firstBarStyle.backgroundColor= color;
-        //             secondBarStyle.backgroundColor= color;
-        //         }, i*5 );
-        //     }
-            
-        //     else {
-        //         setTimeout(() => {
-        //             const [firstBar, newHeight] = animations[i];
-        //             const firstBarStyle= bar[firstBar].style;
-        //             firstBarStyle.height = `${newHeight}px`;
-        //         }, i*5 );
-        //     }
-
-        // }
+                if(isColorChange) {
+                    const[firstBar, secondBar] = animations[i];
+                    let color= i%3===0 ? 'palevioletred' : '#0EF0FB';
+                    // console.log(i)
+                    
+                    setTimeout(() => {
+                        document.getElementsByClassName('bar')[firstBar].style.backgroundColor= color;
+                        document.getElementsByClassName('bar')[secondBar].style.backgroundColor= color;
+                    }, i*this.state.speed );
+                }
+                
+                else {
+                    setTimeout(() => {
+                        const [firstBar, newHeight] = animations[i];
+                        // const firstBarStyle= bar[firstBar].style;
+                        document.getElementsByClassName('bar')[firstBar].style.height = `${newHeight}px`;
+                        // this.setState({activeColor: "palegreen"});
+                    }, i*this.state.speed );
+                }
+                count++;
+        }
+        setTimeout(this.sortComplete.bind(this), animations.length*this.state.speed)
+        // console.log(count)
+        // if(count===animations.length) this.sortComplete();
+        // this.sortComplete();
 
     }
 
@@ -105,10 +122,10 @@ export default class SortingVisualizer extends Component {
         if(this.state.randomRender===true) {
             this.resetArray();
         }
-        console.log(this.state.activeBut);
+        // console.log(this.state.activeBut);
         return (
             <div className= "wrapper">
-            <Navbar array={this.state.array} resetArray={this.resetArray.bind(this)} />
+            <Navbar array={this.state.array} resetArray={this.resetArray.bind(this)} changeSpeed={this.changeSpeed} />
             <div className="background">
             <div className="stage"></div>
             <BarComponent array={this.state.array} barColor={this.state.activeColor}/>        

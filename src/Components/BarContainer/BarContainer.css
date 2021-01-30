@@ -19,13 +19,13 @@
 @media only screen and (min-width: 800px) {
     .container {
         grid-gap: 5px;
-        margin: 40px 40px 50px;
+        margin: 40px;
     }
 }
 
 @media only screen and (max-width: 800px) {
     .container {
         grid-gap: 2px !important;
-        margin: 50px;
+        margin: 40px 50px;
     }
 }

@@ -6,9 +6,10 @@ class Navbar extends React.Component {
         super(props);
         this.state = {
             array: [],
-            arrSize: 100,
-            size: 'Size: '+ /*arrSize*/ 100,
-            speed: 'x'+1
+            arrSize: 10,
+            size: 'Size: '+ /*arrSize*/ 10,
+            speed: 1,
+            speedx: 'x'+1
         }
     }
 
@@ -19,10 +20,16 @@ class Navbar extends React.Component {
 
     // console.log(randomRender);
 
+    changeSpeed(x) {
+
+        this.props.changeSpeed(x);
+    }
+
     setSpeed(x) {
         this.setState({
-            speed: 'x'+ x
-        })
+            speed: 1,
+            speedx: 'x'+ x
+        }, () => this.changeSpeed(x));
     }
 
     newArray() {
@@ -73,10 +80,10 @@ class Navbar extends React.Component {
                     <div className="drop-content drop-size">
                         
                             <div value="1" onClick={()=>{this.setSize(5)}}>5</div>
-                            <div value="1" onClick={()=>{this.setSize(10)}}>10</div>
-                            <div value="2" onClick={()=>{this.setSize(25)}}>25</div>
-                            <div value="4" onClick={()=>{this.setSize(50)}}>50</div>
-                            <div value="8" onClick={()=>{this.setSize(100)}}>100</div>
+                            <div value="2" onClick={()=>{this.setSize(10)}}>10</div>
+                            <div value="4" onClick={()=>{this.setSize(25)}}>25</div>
+                            <div value="8" onClick={()=>{this.setSize(50)}}>50</div>
+                            <div value="10" onClick={()=>{this.setSize(100)}}>100</div>
 
                     </div>    
                 </div>
@@ -85,7 +92,7 @@ class Navbar extends React.Component {
                 </div>
                 <div className="drop">
                     <div className="button speed" /*onClick={()=>setSpeed('x'+`${2*s}`)}*/>
-                        {this.state.speed}
+                        {this.state.speedx}
                     </div>
                     <div className="drop-content">
                         
@@ -93,6 +100,7 @@ class Navbar extends React.Component {
                             <div value="2" onClick={()=>{this.setSpeed(2)}}>x2</div>
                             <div value="4" onClick={()=>{this.setSpeed(4)}}>x4</div>
                             <div value="8" onClick={()=>{this.setSpeed(8)}}>x8</div>
+                            <div value="10" onClick={()=>{this.setSpeed(10)}}>x10</div>
 
                     </div>    
                 </div>

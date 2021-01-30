@@ -19,7 +19,7 @@ export default class BarContainer extends React.Component {
                 }}
             >
                 {this.props.array.map((value, index) => (
-                    <div className="bar" id= {index}
+                    <div className="bar"
                         key={index}
                         style={{
                             height: `${value}px`,

@@ -13,13 +13,15 @@ export default class SortingVisualizer extends Component {
             array: [],
             arrSize: 10,
             speed: 200,
-            activeColor: "#0EF0FB"
+            activeColor: "#0EF0FB",
+            collapseOpen: false,
         };
-
-        this.divRef= React.createRef();
+        this.togglePanel= this.togglePanel.bind(this);
     }
 
-        
+    togglePanel(e) {
+        this.setState({collapseOpen: !this.state.collapseOpen})
+    }       
 
     componentDidMount() {
         this.resetArray(this.state.arrSize);
@@ -130,12 +132,32 @@ export default class SortingVisualizer extends Component {
             <div className="stage"></div>
             <BarComponent array={this.state.array} barColor={this.state.activeColor}/>        
             <div className="but-wrap">
-                <div className="sort-button rem" id="bubbleS" tabindex="1" onClick={this.bubble_sort}>Bubble Sort</div>
-                <div className="sort-button rem" id="selectionS" tabindex="2" onClick={this.selection_sort}>Selection Sort</div>
-                <div className="sort-button rem" id="insertionS" tabindex="3" onClick={this.insertion_sort}>Insertion Sort</div>
-                <div className="sort-button rem" id="mergeS" tabindex="4" onClick={this.merge_sort} /*ref={this.divRef}*/>Merge Sort</div>
-                <div className="sort-button rem" id="quickS" tabindex="5" onClick={this.quick_sort}>Quick Sort</div>
-                <div className="sort-button rem" id="heapS" tabindex="6" onClick={this.heap_sort}>Heap Sort</div>
+                <div>
+                    <div onClick={(e)=>this.togglePanel(e)} className="algorithmsButton">Sorting Algorithms</div>
+                    {this.state.collapseOpen ? (
+                        <>
+                            <div className="sort-button rem" id="bubbleS" tabindex="1" onClick={this.bubble_sort}>Bubble Sort</div>
+                            <div className="sort-button rem" id="selectionS" tabindex="2" onClick={this.selection_sort}>Selection Sort</div>
+                            <div className="sort-button rem" id="insertionS" tabindex="3" onClick={this.insertion_sort}>Insertion Sort</div>
+                            <div className="sort-button rem" id="mergeS" tabindex="4" onClick={this.merge_sort}>Merge Sort</div>
+                            <div className="sort-button rem" id="quickS" tabindex="5" onClick={this.quick_sort}>Quick Sort</div>
+                            <div className="sort-button rem" id="heapS" tabindex="6" onClick={this.heap_sort}>Heap Sort</div>
+                        </>
+                    ) : (
+                        <div style={{display: "none"}}>
+                            <div className="sort-button rem" id="bubbleS" tabindex="1" onClick={this.bubble_sort}>Bubble Sort</div>
+                            <div className="sort-button rem" id="selectionS" tabindex="2" onClick={this.selection_sort}>Selection Sort</div>
+                            <div className="sort-button rem" id="insertionS" tabindex="3" onClick={this.insertion_sort}>Insertion Sort</div>
+                            <div className="sort-button rem" id="mergeS" tabindex="4" onClick={this.merge_sort}>Merge Sort</div>
+                            <div className="sort-button rem" id="quickS" tabindex="5" onClick={this.quick_sort}>Quick Sort</div>
+                            <div className="sort-button rem" id="heapS" tabindex="6" onClick={this.heap_sort}>Heap Sort</div>
+                        </div>
+                    )}
+
+                </div>
+                <div>
+
+                </div>
             </div>
             </div>
             </div>

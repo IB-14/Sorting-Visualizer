@@ -53,11 +53,11 @@ body {
   /*background-color: /*#1c1c1c*/ /*#212121*/;
 }
 
-@media only screen and (min-width: 1120px) {
+/* @media only screen and (min-width: 1120px) {
   body {
     height: 100vh;
   }
-  }
+  } */
 
   .scrollable-element {
     scrollbar-color: #f2fcfe #272b3d;
